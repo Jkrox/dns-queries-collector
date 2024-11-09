@@ -9,6 +9,17 @@ import argparse
 from utils import load_env
 
 class DNSLogParser:
+    """
+    A class to parse DNS logs, collect statistics, and optionally send data to the Lumu API.
+    
+    Attributes:
+        client_key (str): The client key for the Lumu API.
+        collector_id (str): The collector ID for the Lumu API.
+        client_ips (Counter): A counter to keep track of client IP occurrences.
+        hosts (Counter): A counter to keep track of host occurrences.
+        total_records (int): The total number of records processed.
+        records_buffer (List[Dict[str, str | Any]]): A buffer to store records before sending to the API.
+    """
     def __init__(self, client_key: str, collector_id: str) -> None:
         self.client_key = client_key
         self.collector_id = collector_id
