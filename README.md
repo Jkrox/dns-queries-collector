@@ -43,7 +43,7 @@ This is a DNS log parser that processes DNS log files, collects statistics, and 
 
 3. Run the Docker container with the path to your DNS log file, in this case as **`queries.log`**:
     ```sh
-    docker run --rm --name dns-log-parser dns-log-parser queries.log
+    docker run --rm --name dns-log-parser:latest dns-log-parser queries.log
     ```
 
 4. To enable sending data to the Lumu API, add the `--send-to-api` flag:
