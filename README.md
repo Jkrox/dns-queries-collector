@@ -23,7 +23,7 @@ This is a DNS log parser that processes DNS log files, collects statistics, and 
     LUMU_CLIENT_KEY=your_client_key
     COLLECTOR_ID=your_collector_id
     ```
-2. Run the program with the path to your DNS log file:
+2. Run the program with the path to your DNS log file, in this case as **`queries.log`**:
     ```sh
     python main.py queries.log
     ```
@@ -33,6 +33,23 @@ This is a DNS log parser that processes DNS log files, collects statistics, and 
     python main.py queries.log --send-to-api
     ```
 
+### Running with Docker
+1. Ensure you `.env` file is correctly configured as mentioned above.
+
+2. Build the Docker image:
+    ```sh
+    docker build -t dns-log-parser .
+    ```
+
+3. Run the Docker container with the path to your DNS log file, in this case as **`queries.log`**:
+    ```sh
+    docker run --rm --name dns-log-parser dns-log-parser queries.log
+    ```
+
+4. To enable sending data to the Lumu API, add the `--send-to-api` flag:
+    ```sh
+    docker run --rm -t --name dns-log-parser  dns-log-parser:latest --send-to-api
+    ```
 
 ## CLI Arguments
 ```sh
