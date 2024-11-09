@@ -147,4 +147,8 @@ def main() -> None:
     dns_parser.print_statistics()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        sys.exit(0)
