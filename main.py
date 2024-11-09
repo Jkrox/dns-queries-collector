@@ -111,21 +111,22 @@ class DNSLogParser:
         """Calculate the percentage of a given count."""
         return (count / self.total_records * 100) if self.total_records > 0 else 0
 
-    def print_rank(self, counter: Counter, title: str, width: int = 15, n_elements: int = 5) -> None:
+    def print_rank(self, counter: Counter, title: str, width: int = 15, n_elements: int = 15) -> None:
         """Print a ranking formatted output."""
+        separator = "-" * width
         print(f"\n{title} Rank")
-        print("-" * width + " ----- ------")
+        print(f"{separator} ------ --------")
 
         for item, count in counter.most_common(n_elements):
             percentage = self.get_percentage(count)
-            print(f"{item:{width}} {count:3d} {percentage:5.2f}%")
+            print(f"{item:<{width}} {count:5d}  {percentage:6.2f}%")
 
-        print("-" * width + " ----- ------")
+        print(f"{separator} ------ --------")
 
     def print_statistics(self):
         """Print the statistics"""
         print(f"\nTotal records {self.total_records}")
-        self.print_rank(self.client_ips, "Client IPs", 15)
+        self.print_rank(self.client_ips, "Client IPs", 20)
         self.print_rank(self.hosts, "Host", 60) 
 
 def main() -> None:
