@@ -44,8 +44,6 @@ class DNSLogParser:
             "timestamp": iso_timestamp,
             "client_ip": client_ip,
             "hostname": hostname.strip(),
-            "client_name": "",
-            "type": "",
         }
 
     def process_file(self, filename: str, send_to_api: bool = False) -> None:
@@ -82,8 +80,6 @@ class DNSLogParser:
                 "timestamp": record["timestamp"],
                 "name": record["hostname"],
                 "client_ip": record["client_ip"],
-                "client_name": record.get("client_name", ""),
-                "type": record.get("type", "")
             }
             for record in self.records_buffer
         ]
